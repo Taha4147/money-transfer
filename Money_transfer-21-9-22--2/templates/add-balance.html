@@ -1,0 +1,98 @@
+{% extends 'temp.html' %}
+{% load static %}
+{% block right_data %}
+        <!-- -------right side main content------ -->
+        <div class="main-content">
+            <nav>
+                <div class="logo">
+                    <div class="toggler-res-nav">
+                        <img src="{% static 'images/white-ham.png' %}" alt="">
+
+                    </div>
+                </div>
+                <div class="top">
+                    <img src="{% static 'images/profile-img.png' %}" alt="">
+
+                </div>
+            </nav>
+            <!-- ------main-content -->
+            <section class="con-inner">
+                <div class="container">
+                    <div class="con-head">
+                        <div class="heading">
+                            <a href="{% url 'dashboard' %}">
+                                <div class="back-btn">
+                                    <img src="{% static 'images/Icon material-arrow_back.png' %}" alt="">
+
+                                </div>
+                            </a>
+                            <h4>Add Balance :</h4>
+                        </div>
+                    </div>
+                    <div class="sub-head">
+                        <h4>Add Balance</h4>
+                    </div>
+                    <div class="add-new-main add-bal-sec">
+                        <form action={% url 'add_balance' %} method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="fields-main">
+                                <div class="input-field">
+                                    <label for="date">Date</label>
+                                    <input type="date" name="date" id="date" required>
+                                </div>
+                                <div class="input-field">
+                                    <label for="amount">Amount</label>
+                                    <input type="number" name="amount" id="amount" required>
+                                </div>
+                                <div class="submit-btn">
+                                    <input type="submit" value="Add balance" name="submit">
+                                </div>
+                            </div>
+
+                            <div class="fields-main">
+                                <div class="input-field">
+                                    <label for="time">Time</label>
+                                    <input type="time" name="time" id="time" required>
+                                </div>
+                                <div class="input-field">
+                                    <label for="Agent" required>Agent</label>
+                                    <select class="input-field" name="agent" id="agent" style=" font-size: 20px; color: #197abd; border:2px solid; border-radius: 8px; background-color: #F0F5FB; height: 45px; margin-top: 1px;">
+                                        {% for i in agent_list %}
+                                        <option value="{{ i.user_name }}" style=" font-size: 20px;">{{ i.user_name }}</option>
+                                        {% endfor %}
+                                        
+                                        
+                                    </select>
+                                    <!-- <input type="text" name="Agent" id="Agent" required> -->
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+</body>
+
+</html>
+<script>
+    // ---responsive navbar----
+    $(document).ready(function () {
+        $(".toggler-res").click(function () {
+            $(".dashboard-res").css("display", "none");
+            $(".toggler-res-nav").css("display", "flex");
+            $(".main-content").css("width", "calc(100% - 0px)");
+        });
+    });
+
+    $(document).ready(function () {
+        $(".toggler-res-nav").click(function () {
+            $(".dashboard-res").css("display", "block");
+            $(".toggler-res").css("display", "flex");
+            $(".toggler-res-nav").css("display", "none");
+            $(".main-content").css("width", "calc(100% - 80px)");
+        });
+    });
+</script>
+{% endblock right_data %}

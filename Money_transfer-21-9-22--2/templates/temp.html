@@ -1,0 +1,209 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    
+    <!-- ------------Donut-chart----- -->
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/billboard.js/dist/billboard.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/billboard.js/dist/billboard.min.css" />
+    <link rel="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" type="text/css" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js">
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.1/Chart.min.js">
+    </script>
+</head>
+
+<body>
+    <section class="main">
+        <!-- -------left side dashboard------ -->
+        <div class="dashboard dashboard-lg">
+            <div class="logo">
+                <div class="top mt-2">
+                    <img src="{% static './images/aside-logo.png' %}" alt="">
+
+                </div>
+            </div>
+            <h2>Admin Dashboard</h2>
+            <nav>
+                <div class="nav-item">
+                    <a href="{% url 'dashboard' %}">
+                        <div class="icon">
+                            <img src="{% static 'images/d-1.png' %}" alt="">
+
+                        </div>
+                        <span class="active">Dashboard</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="{% url 'agent_list' %}">
+                        <div class="icon">
+                            <img src="{% static 'images/d-2.png' %}" alt="">
+
+                        </div>
+                        <span>Agents</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="{% url 'employee_details' %}">
+                        <div class="icon">
+                            <img src="{% static 'images/d-3.png' %}" alt="">
+
+                        </div>
+                        <span>Employees</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="orders-1.html">
+                        <div class="icon">
+                            <img src="{% static 'images/d-5.png' %}" alt="">
+                        </div>
+                        <span>Orders</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="{% url 'add_balance' %}">
+                        <div class="icon">
+                            <img src="{% static 'images/d-7.png' %}" alt="">
+                        </div>
+                        <span>Add Balance</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="finance-and-profits.html">
+                        <div class="icon">
+                            <img src="{% static 'images/d-8.png' %}" alt="">
+                        </div>
+                        <span>Finance <br> & Profits</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="{% url 'expenses' %}">
+                        <div class="icon">
+                            <img src="{% static 'images/d-9.png' %}" alt="">
+                        </div>
+                        <span>Expenses</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="{% url 'payroll' %}">
+                        <div class="icon">
+                            <img src="{% static 'images/d-10.png' %}" alt="">
+                        </div>
+                        <span>Payroll</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="chat.html">
+                        <div class="icon">
+                            <img src="{% static 'images/d-11.png' %}" alt="">
+                        </div>
+                        <span>Chat</span>
+                    </a>
+                </div>
+            </nav>
+        </div>
+        <!-- ----responsive-dashboar--- -->
+        <div class="dashboard dashboard-res">
+            <div class="logo">
+                <div class="top toggler-res">
+                    <img src="images/ham.png" alt="">
+                </div>
+            </div>
+            <!-- <h2>Admin Dashboard</h2> -->
+            <nav>
+                <div class="nav-item">
+                    <a href="dashboard.html">
+                        <div class="icon">
+                            <img src="{% static 'images/d-1.png' %}" alt="">
+                        </div>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="agents.html">
+                        <div class="icon">
+                            <img src="{% static 'images/d-2.png' %}" alt="">
+                        </div>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="employee.html">
+                        <div class="icon">
+                            <img src="{% static 'images/d-3.png' %}" alt="">
+                        </div>
+                    </a>
+                </div>
+                <!-- <div class="nav-item">
+                    <a href="cities.html">
+                        <div class="icon">
+                            <img src="{% static 'images/d-4.png' %}" alt="">
+                        </div>
+                    </a>
+                </div> -->
+                <div class="nav-item">
+                    <a href="orders-1.html">
+                        <div class="icon">
+                            <img src="{% static 'images/d-5.png' %}" alt="">
+                        </div>
+                    </a>
+                </div>
+                <!-- <div class="nav-item">
+                    <a href="transection-history.html">
+                        <div class="icon">
+                            <img src="images/d-6.png" alt="">
+                        </div>
+                    </a>
+                </div> -->
+                <div class="nav-item">
+                    <a href="">
+                        <div class="icon">
+                            <img src="{% static 'images/d-7.png' %}" alt="">
+                        </div>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="finance-and-profits.html">
+                        <div class="icon">
+                            <img src="{% static 'images/d-8.png' %}" alt="">
+                        </div>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="expenses.html">
+                        <div class="icon">
+                            <img src="{% static 'images/d-9.png' %}" alt="">
+                        </div>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="payroll.html">
+                        <div class="icon">
+                            <img src="{% static 'images/d-10.png' %}" alt="">
+                        </div>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="chat.html">
+                        <div class="icon">
+                            <img src="{% static 'images/d-11.png' %}" alt="">
+                        </div>
+                    </a>
+                </div>
+            </nav>
+        </div>
+
+{% block right_data %} {% endblock right_data %}

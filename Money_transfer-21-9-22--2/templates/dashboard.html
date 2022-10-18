@@ -1,0 +1,193 @@
+{% extends 'temp.html' %}
+{% load static %}
+{% block right_data %}
+        <!-- -------right side main content------ -->
+        <div class="main-content">
+            <nav>
+                <div class="logo">
+                    <div class="toggler-res-nav">
+                        <img src="images/white-ham.png" alt="">
+                    </div>
+                </div>
+                <div class="top">
+                    <img src="images/profile-img.png" alt="">
+                </div>
+            </nav>
+
+            <!-- --------d-hero-main------ -->
+            <section class="d-hero-main con-inner">
+                <div class="container">
+                    <div class="d-hero">
+                        <div class="hero-left">
+                            <!-- left-row1--- -->
+                            <div class="hero-left-row">
+                                <div class="h-left-box">
+                                    <div class="icon">
+                                        <img src="{% static 'images/Group 61.png' %}" alt="">
+
+                                    </div>
+                                    <div class="h-left-content">
+                                        <h4>Outstanding Orders</h4>
+                                        <h2>34</h2>
+                                    </div>
+                                </div>
+                                <div class="h-left-box">
+                                    <div class="icon">
+                                        <img src="{% static 'images/Group 60.png' %}" alt="">
+                                    </div>
+                                    <div class="h-left-content">
+                                        <h4>Received Orders</h4>
+                                        <h2>14</h2>
+                                    </div>
+                                </div>
+                                <div class="h-left-box">
+                                    <div class="icon">
+                                        <img src="{% static 'images/Group 59.png' %}" alt="">
+                                    </div>
+                                    <div class="h-left-content">
+                                        <h4>Canceled Orders</h4>
+                                        <h2>5</h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- left-row2--- -->
+                            <div class="hero-left-r2-main">
+                                <!-- ------sytem detail and daily profit box---- -->
+                                <div class="hero-left-row2 history-left">
+                                    <div class="history-box">
+                                        <a href="all-details.html">
+                                            <div class="icon">
+                                                <img src="{% static 'images/Icon material-details.png' %}" alt="">
+
+                                            </div>
+                                            <p>System details</p>
+                                        </a>
+                                    </div>
+                                    <div class="history-box">
+                                        <a href="daily-profit-det.html">
+                                            <div class="icon">
+                                                <img src="{% static 'images/images/Path 335.png' %}" alt="">
+
+                                            </div>
+                                            <p>Daily profit details</p>
+                                        </a>
+                                    </div>
+                                </div>
+                                <!-- ------total sales-graph---- -->
+                                <div class="total-sales">
+                                    <h2>total sales graph</h2>
+                                </div>
+                                <!-- --------daily profit graph--------- -->
+                                <div class="daily-graph">
+                                    <h2>Daily profit graph</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ------hero right for pie chart---- -->
+                        <div class="hero-right">
+                            <h2>Donut Graph</h2>
+                            <!-- <div id="donut-chart"></div>
+
+                            <script>
+                                var chart = bb.generate({
+                                    data: {
+                                        columns: [
+                                            ["Employee1", 20],
+                                            ["Employee2", 15],
+                                            ["Employee3", 20],
+                                            ["Employee4", 30],
+                                            ["Employee5", 30],
+                                            ["Employee6", 05],
+                                            ["Employee6", 10],
+                                        ],
+                                        type: "donut",
+                                        onclick: function (d, i) {
+                                            console.log("onclick", d, i);
+                                        },
+                                        onover: function (d, i) {
+                                            console.log("onover", d, i);
+                                        },
+                                        onout: function (d, i) {
+                                            console.log("onout", d, i);
+                                        },
+                                    },
+                                    donut: {
+                                        title: "120 Total orders",
+                                    },
+                                    bindto: "#donut-chart",
+                                });
+                            </script> -->
+                        </div>
+                    </div>
+
+                    <!-- ------dashboard-sec2-------- -->
+                    <section class="dash-2">
+                        <div class="dash-2-left">
+                            <!-- ------calculator---- -->
+                            <div class="emp-cal-right">
+                                <div class="cal-head">
+                                    <h2>Fee calculator</h2>
+                                </div>
+                                <div class="cal-body">
+                                    <div class="cal-box box-1">
+                                        <h6>How much you want
+                                            to send</h6>
+                                        <div class="box-main">
+                                            <span>$</span>
+                                            <input type="text" placeholder="300" name="" id="">
+                                        </div>
+                                    </div>
+                                    <div class="cal-box box-2">
+                                        <h6>Total Amount : </h6>
+                                        <div class="box-main">
+                                            <span>$</span>
+                                            <h2>320</h2>
+                                        </div>
+                                    </div>
+                                    <div class="cal-box box-3">
+                                        <h6>Fee : </h6>
+                                        <div class="box-main">
+                                            <span>$</span>
+                                            <h2>20</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- -----total usd--- -->
+                            <div class="t-usd">
+                                <h3>Total USD in Haiti</h3>
+                                <h2>$ 50000</h2>
+                            </div>
+                        </div>
+                        <div class="dash-2-right">
+                            <!-- t-user-line-graph---- -->
+                        </div>
+                    </section>
+                </div>
+            </section>
+
+        </div>
+    </section>
+    {% endblock right_data %}
+</body>
+
+</html>
+<script>
+    // ---responsive navbar----
+    $(document).ready(function () {
+        $(".toggler-res").click(function () {
+            $(".dashboard-res").css("display", "none");
+            $(".toggler-res-nav").css("display", "flex");
+            $(".main-content").css("width", "calc(100% - 0px)");
+        });
+    });
+
+    $(document).ready(function () {
+        $(".toggler-res-nav").click(function () {
+            $(".dashboard-res").css("display", "block");
+            $(".toggler-res").css("display", "flex");
+            $(".toggler-res-nav").css("display", "none");
+            $(".main-content").css("width", "calc(100% - 80px)");
+        });
+    });
+</script>
