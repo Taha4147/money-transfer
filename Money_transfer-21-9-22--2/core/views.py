@@ -2,11 +2,10 @@ from django.views import View
 from django.shortcuts import render, redirect
 from .models import AddAgent, Balance, Expenses, AddEmployeeModel
 from django.contrib import messages
-from .forms import addbalanceform
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 from core import forms
-from django.contrib.auth import login, authenticate, logout 
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.forms import UserCreationForm 
 # Create your views here.
 
 class dashboard(View):
@@ -27,8 +26,16 @@ class register(View):
         if form.is_valid():
             messages.success(request , "congratulations!! Registered Sucessfully")
             form.save()
-        print(form.errors)
-        context['form']=form
+        password1 = form.data['password1']
+        password2 = form.data['password2']
+        email = form.data['email']
+        for msg in form.errors.as_data():
+            if msg == 'email':
+                messages.error(request, f"Declared {email} is not valid")
+            if msg == 'password2' and password1 == password2:
+                messages.error(request, f"Selected Password is not strong enough")
+            elif msg == 'password2' and password1 != password2:
+                messages.error(request, f"Password do not match")
         return render(request=request, template_name=self.template, context=self.context)
     
 
@@ -123,50 +130,32 @@ class expenses(View):
         return render(request=request, template_name=self.template,context=self.context)
 
 
-def add_balance(request):
-    print("------------balance-------------")
-    
-    agent_list = AddAgent.objects.all()
-
-    context = {'agent_list': agent_list}
-
-    if request.method == 'POST':
+class add_balance(View):
+    template= 'add-balance.html'
+    context={}
+    def get(self,request):
+        context=self.context
+        context['agent_list']=AddAgent.objects.all()
+        return render(request=request,template_name=self.template,context=self.context)
+    def post(self,request):
         amount = request.POST['amount']
-        print(amount)
         name = request.POST['agent']
-        print(name)
-        get_name = forms.AddAgent.objects.get(user_name__icontains=name)
+        get_name = forms.AddAgent.objects.get(pk=name)
         get_name.amount = (get_name.amount + int(amount))
         get_name.save()
-        print("save")
         form = forms.addbalanceform(request.POST)
-        print(request.POST)
         if form.is_valid():
             form.save()
-        print(form.errors)
         return redirect("Balance_details")
 
-    return render(request, 'add-balance.html', context)
-
-
-def Balance_details(request):
-
-    queryset = Balance.objects.all()
-    print(queryset)
-    context = {
-
-        'queryset': queryset
-    }
-    # if request.method == 'POST':
-    #     name = request.POST['name']
-    #     Email = request.POST['Email']
-    #     phone = request.POST['phone']
-    #     website_name = request.POST['website_name']
-    #     my_message = request.POST['my_message']
-    #     new_record = myformModel(
-    #         name=name, Email=Email, phone=phone, website_name=website_name, my_message=my_message)
-    #     new_record.save()
-    return render(request, 'balance-history.html', context)
+class Balance_details(View):
+    template='balance-history.html'
+    context={}
+    def get(self,request):
+        context=self.context
+        context['queryset']=Balance.objects.all()
+        return render(request=request,template_name=self.template,context=self.context)
+    
 
 
 class payroll(View):
@@ -186,9 +175,9 @@ class payroll(View):
             payroll = AddAgent.objects.get(id=i)
             for j in context['amount']:
                 if j != "":
-                    print("1")
                     payroll.amount = (payroll.amount + int(j))
                     payroll.save()
+                    context['payroll']=payroll
                     break
         return render(request=request, template_name=self.template , context=self.context)
  

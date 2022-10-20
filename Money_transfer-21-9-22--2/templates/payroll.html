@@ -230,7 +230,7 @@
                                             <div class="icon">
                                                 <img src="images/city.png" alt="">
                                             </div>
-                                            <span>Country</span>
+                                            <span>{{instance.Country}}</span>
                                         </div>
                                     </td>
                                     <!-- -----to show--- -->
@@ -250,7 +250,7 @@
                                             <div class="icon">
                                                 <img src="images/city.png" alt="">
                                             </div>
-                                            <span>City</span>
+                                            <span>{{instance.City}}</span>
                                         </div>
                                     </td>
                                     <!-- -----to show--- -->
@@ -271,7 +271,7 @@
                                             <div class="icon">
                                                 <img src="images/financial-currency-svgrepo-com.png" alt="">
                                             </div>
-                                            <span>USD 400</span>
+                                            <span>{{instance.amount}}</span>
                                         </div>
                                     </td>
                                     <!-- -----to show--- -->
@@ -382,8 +382,8 @@
                             </div>
                         
                         </div>
-                        <div class="p-order-right">
-                            <button class="add-transection">
+                        <div class="p-order-right add-t-btn">
+                            <button class="add-transection ">
                                 <a href="#" class="add-t-btn">
                                     <span>Add new</span>
                                     <div class="icon">
@@ -399,13 +399,7 @@
                             $(".add-t-btn").click(function () {
                                 $("table.add-tbl").show();
                             });
-
                         });
-
-                      
-
-
-
                     </script>
                     </form>
                     </div>

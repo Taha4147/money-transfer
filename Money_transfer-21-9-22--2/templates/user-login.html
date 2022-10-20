@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
     <title>Document</title>
 </head>
 
@@ -18,13 +18,7 @@
             <div class="login-form">
                 <div class="login-content">
                     <!--Messages Start-->
-                {% for message in messages %}
-                <div class="container-fluid p-0">
-                    <div class="alert {{ message.tags }} alert-dismissible" role="alert">
-                        <p align="center">{{ message }}</p>
-                    </div>
-                </div>
-                {% endfor %}
+                
                 <!--End Messages-->
                     <form id="contact" method="post" novalidate>
                         {% csrf_token %}
@@ -35,6 +29,14 @@
                             </div>
                             <h2>Login Now</h2>
                         </div>
+                        {% for message in messages %}
+                        <br>
+                <div class="container-fluid " style="color: red;">
+                    <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+                        <p class='text-center'>{{ message }}</p>
+                    </div>
+                </div>
+                {% endfor %}
                         <div class="form-fields-main">
                             <div class="input-field">
                                 <label for="username">
