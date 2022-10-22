@@ -1,7 +1,17 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 from django.utils.translation import gettext_lazy as _
 # Create your models here.
 
+class User(AbstractUser):
+    # creater=models.TextField(max_length=50,blank=True)
+    id2 = models.TextField(max_length=50, blank=True)
+    type = models.TextField(max_length=50,blank=True)
+    phone = models.TextField(max_length=50, blank=True)
+    amount = models.TextField(max_length=50, blank=True)
+    country = models.TextField(max_length=50, blank=True)
+    city = models.TextField(max_length=50, blank=True)
+    image=models.ImageField(upload_to='images/', null=True)
 
 class myformModel(models.Model):
     name = models.CharField(max_length=150, blank=True)
@@ -14,27 +24,6 @@ class myformModel(models.Model):
         return self.name
 
 
-class AddEmployeeModel(models.Model):
-    user_id = models.TextField(null=True)
-    user_name = models.CharField(max_length=150, null=True)
-    Email = models.EmailField(max_length=150, null=True)
-    phone = models.TextField(null=True)
-    Address = models.CharField(max_length=150, null=True)
-    Country = models.CharField(max_length=150, null=True)
-    City = models.CharField(max_length=150, null=True)
-    password = models.CharField(max_length=150, null=True)
-    employee_pic = models.ImageField(upload_to='images/', null=True)
-
-    def __str__(self):
-        return self.user_name
-
-    @property
-    def get_photo_url(self):
-        if self.employee_pic and hasattr(self.employee_pic, 'url'):
-            return self.employee_pic.url
-        else:
-            return "/static/images/upload-img.png"
-
 
 class Expenses(models.Model):
     date = models.DateField(max_length=150, blank=True,)
@@ -46,29 +35,29 @@ class Expenses(models.Model):
         return self.used_for_purpose
 
 
-class AddAgent(models.Model):
-    user_id = models.TextField(null=True)
-    user_name = models.CharField(max_length=150, null=True)
-    Email = models.EmailField(max_length=150, null=True)
-    phone = models.TextField(null=True)
-    Country = models.CharField(max_length=150, null=True)
-    City = models.CharField(max_length=150, null=True)
-    password = models.CharField(max_length=150, null=True)
-    employee_pic = models.ImageField(upload_to='images/', null=True)
-    amount=models.IntegerField(null=True)
-    def __str__(self):
-        return self.user_name
+# class AddAgent(models.Model):
+#     user_id = models.TextField(null=True)
+#     user_name = models.CharField(max_length=150, null=True)
+#     Email = models.EmailField(max_length=150, null=True)
+#     phone = models.TextField(null=True)
+#     Country = models.CharField(max_length=150, null=True)
+#     City = models.CharField(max_length=150, null=True)
+#     password = models.CharField(max_length=150, null=True)
+#     employee_pic = models.ImageField(upload_to='images/', null=True)
+#     amount=models.IntegerField(null=True)
+#     def __str__(self):
+#         return self.user_name
 
-    @property
-    def get_photo_url(self):
-        if self.agent_pic and hasattr(self.agent_pic, 'url'):
-            return self.agent_pic.url
-        else:
-            return "/static/images/upload-img.png"
+#     @property
+#     def get_photo_url(self):
+#         if self.agent_pic and hasattr(self.agent_pic, 'url'):
+#             return self.agent_pic.url
+#         else:
+#             return "/static/images/upload-img.png"
 
 
 class Balance(models.Model):
-    agent = models.ForeignKey(AddAgent, on_delete=models.CASCADE)
+    # agent = models.ForeignKey(AddAgent, on_delete=models.CASCADE)
     date = models.DateField(max_length=150, blank=True)
     time = models.TimeField(max_length=150, blank=True)
     amount = models.IntegerField( blank=True)

@@ -1,4 +1,4 @@
-{% extends 'temp.html' %}
+{% extends "temp.html" %}
 {% load static %}
 {% block right_data %}
         <!-- -------right side main content------ -->
@@ -10,14 +10,11 @@
                     </div>
                 </div>
                 <div class="top" id="bell">
-                    <img src="{% static './images/Component 38 – 2.png' %}" alt="">
+                    <img src="{% static '/images/Component 38 – 2.png' %}" alt="">
                 </div>
             </nav>
-
-
-            <!-- profile drop down  -->
-
-            <div class="d-flex justify-content-center align-items-center p-1">
+             <!-- profile drop down  -->
+             <div class="d-flex justify-content-center align-items-center p-1">
                 <div>
                   <!-- <i class="icon bi bi-bell" id="bell"></i> -->
                   <div class="notifications " id="box">
@@ -168,102 +165,89 @@
               </div>
             <!-- ------main-content -->
             <section class="con-inner">
-                <div class="container ">
-                    <div class="con-head ">
+                <div class="container">
+                    <div class="con-head">
                         <div class="heading">
-                            <a href="agents.html">
+                            <a href="orders-1.html">
                                 <div class="back-btn">
                                     <img src="{% static 'images/Icon material-arrow_back.png' %}" alt="">
                                 </div>
                             </a>
-
-                            <h4>Add New Agents :</h4>
+                            <h4>Canceled Orders :</h4>
                         </div>
                     </div>
-                    <div class="sub-head">
-                        <h4>Add new city</h4>
-                    </div>
-                    <div class="add-new-main ">
-                        <form action="" method="POST" enctype="multipart/form-data">
-                            {% csrf_token %}
-                            <input type="text" name="creater" value="{{request.user.pk}}" hidden>
-                              <div class="fields-main">
-                                  <div class="input-field">
-                                      <label for="no">Id.</label>
-                                      <input type="text" name="id2" id="no" required>
-                                  </div>
-                                  <div class="input-field">
-                                      <label for="name">User name</label>
-                                      <input type="text" name="username" id="name" required>
-                                  </div>
-                                  <div class="input-field">
-                                      <label for="contact">Phone</label>
-                                      <input type="text" name="phone" id="contact" required>
-                                  </div>
-                                  <div class="input-field">
-                                      <label for="email"> Email</label>
-                                      <input type="email" name="email" id="email" required>
-                                  </div>
-                                  <div class="input-field">
-                                      <label for="Country">Country</label>
-                                      <input type="text" name="country" id="Country" required>
-                                  </div>
-                                  <div class="input-field">
-                                      <label for="city">City</label>
-                                      <input type="text" name="city" id="city" required>
-                                  </div>
-                                  <div class="input-field">
-                                      <label for="pass">Password</label>
-                                      <input type="password" name="password1" id="pass" required>
-                                  </div>
-                                  <div class="input-field">
-                                      <label for="pass">Password(AGAIN)</label>
-                                      <input type="password" name="password2" id="pass" required>
-                                  </div>
-                                  <div class="input-field">
-                                      <label for="pass">Amount</label>
-                                      <input type="number" name="amount" id="pass" required>
-                                  </div>
-                                      <input type="text" name="type" value="agent" hidden>
-                                  <div class="submit-btn">
-                                      <input type="submit" value="Create Employee" name="submit">
-                                  </div>
-                              </div>
-                              <div class="img-main">
-                                  <div class="upload-img">
-                                      <img src="{% static 'images/upload-img.png' %}" alt="">
-                                  </div>
-                                  <div class="upload-btn">
-
-                                      <input type="file" name="image" class="custom-file-input">
-                                  </div>
-                               </div> 
-                          </form>
+                    <div class="con-tbl">
+                        <table>
+                            <tr>
+                                <th>No.</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Sender name</th>
+                                <th>Sender phone</th>
+                                <th>Receiver name</th>
+                                <th>Receiver phone</th>
+                                <th>Amount</th>
+                                <th>Assigned Agent</th>
+                                <th>Status</th>
+                            </tr>
+                            <tr>
+                                <td>01</td>
+                                <td>8/3/2022</td>
+                                <td>4:09PM</td>
+                                <td>Ashir Ali</td>
+                                <td>09893003322</td>
+                                <td>Ashir Ali</td>
+                                <td>09893003322</td>
+                                <td>$ 1000</td>
+                                <td>Alex Martin</td>
+                                <td class="status">Canceled</td>
+                            </tr>
+                            <tr>
+                                <td>01</td>
+                                <td>8/3/2022</td>
+                                <td>4:09PM</td>
+                                <td>Ashir Ali</td>
+                                <td>09893003322</td>
+                                <td>Ashir Ali</td>
+                                <td>09893003322</td>
+                                <td>$ 1000</td>
+                                <td>Alex Martin</td>
+                                <td class="status">Canceled</td>
+                            </tr>
+                            <tr>
+                                <td>01</td>
+                                <td>8/3/2022</td>
+                                <td>4:09PM</td>
+                                <td>Ashir Ali</td>
+                                <td>09893003322</td>
+                                <td>Ashir Ali</td>
+                                <td>09893003322</td>
+                                <td>$ 1000</td>
+                                <td>Alex Martin</td>
+                                <td class="status">Canceled</td>
+                            </tr>
+                            <tr>
+                                <td>01</td>
+                                <td>8/3/2022</td>
+                                <td>4:09PM</td>
+                                <td>Ashir Ali</td>
+                                <td>09893003322</td>
+                                <td>Ashir Ali</td>
+                                <td>09893003322</td>
+                                <td>$ 1000</td>
+                                <td>Alex Martin</td>
+                                <td class="status">Canceled</td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
             </section>
         </div>
     </section>
-    {% endblock right_data %}
-
-    <script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly"
-    defer
-  ></script>
 </body>
 
 </html>
-
 <script>
-    $(document).ready(function () {
-        $(".block-btn").click(function () {
-            $(".login-main-popup-wr").show();
-        });
-        $(".cancel-btn").click(function () {
-            $(".login-main-popup-wr").hide();
-        });
-    });
-
     // ---responsive navbar----
     $(document).ready(function () {
         $(".toggler-res").click(function () {
@@ -282,3 +266,4 @@
         });
     });
 </script>
+{% endblock right_data %}

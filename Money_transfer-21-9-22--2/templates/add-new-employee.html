@@ -182,55 +182,59 @@
                           <h4>Add new employee</h4>
                       </div>
                       <div class="add-new-main">
-                          <form action="" method="POST" enctype="multipart/form-data">
-                            {% csrf_token %}
-                              <div class="fields-main">
-                                  <div class="input-field">
-                                      <label for="no">Id.</label>
-                                      <input type="text" name="user_id" id="no" required>
-                                  </div>
-                                  <div class="input-field">
-                                      <label for="name">User name</label>
-                                      <input type="text" name="user_name" id="name" required>
-                                  </div>
-                                  <div class="input-field">
-                                      <label for="contact">Phone</label>
-                                      <input type="text" name="phone" id="contact" required>
-                                  </div>
-                                  <div class="input-field">
-                                      <label for="address">Address</label>
-                                      <input type="text" name="Address" id="address" required>
-                                  </div>
-                                  <div class="input-field">
-                                      <label for="email"> Email</label>
-                                      <input type="email" name="Email" id="email" required>
-                                  </div>
-                                  <div class="input-field">
-                                      <label for="Country">Country</label>
-                                      <input type="text" name="Country" id="Country" required>
-                                  </div>
-                                  <div class="input-field">
-                                      <label for="city">City</label>
-                                      <input type="text" name="City" id="city" required>
-                                  </div>
-                                  <div class="input-field">
-                                      <label for="pass">Password</label>
-                                      <input type="password" name="password" id="pass" required>
-                                  </div>
-                                  <div class="submit-btn">
-                                      <input type="submit" value="Create Employee" name="submit">
-                                  </div>
-                              </div>
-                              <div class="img-main">
-                                  <div class="upload-img">
-                                      <img src="{% static 'images/upload-img.png' %}" alt="">
-                                  </div>
-                                  <div class="upload-btn">
-
-                                      <input type="file" name="employee_pic" class="custom-file-input">
-                                  </div>
-                               </div> 
-                          </form>
+                        <form action="" method="POST" enctype="multipart/form-data">
+                          {% csrf_token %}
+                            <div class="fields-main">
+                                <div class="input-field">
+                                    <label for="no">Id.</label>
+                                    <input type="text" name="id2" id="no" required>
+                                </div>
+                                <div class="input-field">
+                                    <label for="name">User name</label>
+                                    <input type="text" name="username" id="name" required>
+                                </div>
+                                <div class="input-field">
+                                    <label for="contact">Phone</label>
+                                    <input type="text" name="phone" id="contact" required>
+                                </div>
+                                <div class="input-field">
+                                    <label for="email"> Email</label>
+                                    <input type="email" name="email" id="email" required>
+                                </div>
+                                <div class="input-field">
+                                    <label for="Country">Country</label>
+                                    <input type="text" name="country" id="Country" required>
+                                </div>
+                                <div class="input-field">
+                                    <label for="city">City</label>
+                                    <input type="text" name="city" id="city" required>
+                                </div>
+                                <div class="input-field">
+                                    <label for="pass">Password</label>
+                                    <input type="password" name="password1" id="pass" required>
+                                </div>
+                                <div class="input-field">
+                                    <label for="pass">Password(AGAIN)</label>
+                                    <input type="password" name="password2" id="pass" required>
+                                </div>
+                                <div class="input-field">
+                                    <label for="pass">Amount</label>
+                                    <input type="number" name="amount" id="pass" required>
+                                </div>
+                                    <input type="text" name="type" value="employee" hidden>
+                                <div class="submit-btn">
+                                    <input type="submit" value="Create Employee" name="submit">
+                                </div>
+                            </div>
+                            <div class="img-main">
+                                <div class="upload-img">
+                                    <img src="{% static 'images/upload-img.png' %}" alt="">
+                                </div>
+                                <div class="upload-btn">
+                                    <input type="file" name="image" class="custom-file-input">
+                                </div>
+                             </div> 
+                        </form>
                       </div>
                   </div>
               </section>

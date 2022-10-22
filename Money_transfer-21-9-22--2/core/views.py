@@ -1,8 +1,8 @@
 from django.views import View
 from django.shortcuts import render, redirect
-from .models import AddAgent, Balance, Expenses, AddEmployeeModel
+from .models import  Balance, Expenses,User
 from django.contrib import messages
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
 from core import forms
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm 
@@ -78,9 +78,12 @@ class  add_employee_view(View):
     def get(self,request):
         return render(request=request, template_name=self.template) 
     def post(self,request):
-        form=forms.AddEmployeeModelForm(request.POST, request.FILES)
+        form=forms.NewUserForm(request.POST, request.FILES)
+        print(request.POST)
+        # print(request.FILES)
         if form.is_valid():
             form.save()
+        print(form.errors)
         return render(request=request,template_name=self.template)
     
 class  add_agent_view(View):
@@ -89,7 +92,8 @@ class  add_agent_view(View):
     def get(self,request):
         return render(request=request, template_name=self.template) 
     def post(self,request):
-        form=forms.AddAgentForm(request.POST, request.FILES)
+        form=forms.NewUserForm(request.POST, request.FILES)
+        print("request POST is: ",request.POST)
         if form.is_valid():
             form.save()
         print(form.errors)
@@ -101,7 +105,8 @@ class agent_list(View):
     context={}
     def get(self,request):
         context=self.context
-        context['queryset']=AddAgent.objects.all()
+        print("user is",request.user)
+        context['queryset']=User.objects.filter(type='agent')
         return render (request=request ,template_name=self.tempalate, context=self.context)
     
     
@@ -110,7 +115,7 @@ class employee_details(View):
     context={}
     def get(self,request):
         context=self.context
-        context['queryset']= AddEmployeeModel.objects.all()
+        # context['queryset']= AddEmployeeModel.objects.all()
         return render (request=request ,template_name=self.tempalate, context=self.context)
 
 
@@ -135,7 +140,7 @@ class add_balance(View):
     context={}
     def get(self,request):
         context=self.context
-        context['agent_list']=AddAgent.objects.all()
+        # context['agent_list']=AddAgent.objects.all()
         return render(request=request,template_name=self.template,context=self.context)
     def post(self,request):
         amount = request.POST['amount']
@@ -163,7 +168,7 @@ class payroll(View):
     context={}
     def get(self,request):
         context=self.context
-        context['queryset']= AddAgent.objects.all()
+        # context['queryset']= AddAgent.objects.all()
         return render(request=request, template_name=self.template , context=self.context)
 
     def post(self,request):
@@ -172,7 +177,7 @@ class payroll(View):
         context['amount'] = request.POST.getlist('amount')
         for i in context['check_list']:
             print(i)
-            payroll = AddAgent.objects.get(id=i)
+            # payroll = AddAgent.objects.get(id=i)
             for j in context['amount']:
                 if j != "":
                     payroll.amount = (payroll.amount + int(j))
@@ -180,4 +185,40 @@ class payroll(View):
                     context['payroll']=payroll
                     break
         return render(request=request, template_name=self.template , context=self.context)
- 
+
+class orders(View):
+    template='orders-1.html'
+    context={}
+    def get(self,request):
+        context=self.context
+        return render(request=request, template_name=self.template, context=self.context)
+
+class add_new_order(View):
+    template='add-new-order.html'
+    context={}
+    def get(self,request):
+        context=self.context
+        return render(request=request, template_name=self.template, context=self.context)
+
+
+class new_orders(View):
+    template='add-new-order-9.html'
+    context={}
+    def get(self,request):
+        context=self.context
+        return render(request=request, template_name=self.template, context=self.context)
+
+
+class canceled_orders(View):
+    template='can-order.html'
+    context={}
+    def get(self,request):
+        context=self.context
+        return render(request=request, template_name=self.template, context=self.context)
+
+class payment_sucessfully(View):
+    template='payment_sucecessfull.html'
+    context={}
+    def get(self,request):
+        context=self.context
+        return render(request=request, template_name=self.template, context=self.context)

@@ -41,14 +41,14 @@
                             </tr>
                             {% for instance in queryset %}
                             <tr>
-                                <td>{{instance.user_id}}</td>
-                                <td><img src="{{ instance.employee_pic.url }}" alt="" style="
+                                <td>{{instance.id2}}</td>
+                                <td><img src="{{ instance.image.url }}" alt="" style="
                                     width: 100%;"></td>
-                                <td>{{instance.user_name}}</td>
+                                <td>{{instance.username}}</td>
                                 <td>{{instance.phone}}</td>
 
-                                <td>{{instance.City}}</td>
-                                <td>{{instance.Country}}</td>
+                                <td>{{instance.city}}</td>
+                                <td>{{instance.country}}</td>
                                 <td class="action">
                                     <div class="btn blue1-btn">
                                         <a href="#" class="block-btn">Block</a>
